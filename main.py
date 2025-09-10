@@ -8,3 +8,25 @@ l_letter = ['a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w
 numbers =['1, 2, 3, 4, 5, 6, 7, 8, 9']
 symbols = ['!, @, #, $, %']
 
+# set default points
+points = 0
+
+# add points 
+if l_letter {
+    points + 1 
+}
+
+if u_letters {
+    points + 2 
+}
+
+if numbers {
+    points + 3
+}
+
+if symbols {
+    points + 4
+}
+
+# print total
+print(f'you have {points} points')
