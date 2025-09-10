@@ -2,7 +2,7 @@
 password = input("Enter your password: ")
 print(f'Your password is {password}')
 
-# define charecters
+# define characters
 u_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 l_letters = "abcdefghijklmnopqrstuvwxyz"
 numbers = "1234567890"
@@ -11,7 +11,10 @@ symbols = "!@#$%"
 # Set default points
 points = 0
 
-# Add points based
+# set password tier
+good_ps = 10
+
+# Add points 
 if any(char in l_letters for char in password):
     points += 1
 
@@ -26,3 +29,13 @@ if any(char in symbols for char in password):
 
 # Print total
 print(f'You have {points} points')
+
+# rank password
+if points == good_ps:
+    print('Your password is good')
+
+elif points > good_ps:
+    print('Your password is great')
+
+else:
+    print('Your password is bad')
