@@ -33,7 +33,10 @@ if any(char in symbols for char in password):
 print(f'You have {points} points')
 
 # rank password
-if points == good_ps:
+if points > good_ps:
+    print('Your password is great')
+
+elif points == good_ps:
     print('Your password is good')
 
     # fix good password 
@@ -41,9 +44,6 @@ if points == good_ps:
     new_symbol = random.choice(symbols)
     new_ps = password + new_symbol + new_number
     print(f'Your new password is {new_ps}')
-
-elif points > good_ps:
-    print('Your password is great')
 
 else:
     print('Your password is bad')
