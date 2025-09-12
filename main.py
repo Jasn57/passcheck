@@ -1,3 +1,5 @@
+import random
+
 # Get password
 password = input("Enter your password: ")
 print(f'Your password is {password}')
@@ -34,8 +36,23 @@ print(f'You have {points} points')
 if points == good_ps:
     print('Your password is good')
 
+    # fix good password 
+    new_number = random.choice(numbers)
+    new_symbol = random.choice(symbols)
+    new_ps = password + new_symbol + new_number
+    print(f'Your new password is {new_ps}')
+
 elif points > good_ps:
     print('Your password is great')
 
 else:
     print('Your password is bad')
+
+    # fix bad password 
+    new_number = random.choice(numbers)
+    new_symbol = random.choice(symbols)
+    new_uletter = random.choice(u_letters)
+    new_lletter = random.choice(l_letters)
+
+    new_ps = password + new_uletter + new_lletter + new_symbol + new_number
+    print(f'Your stronger password is {new_ps}')
