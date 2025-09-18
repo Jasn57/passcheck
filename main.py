@@ -36,23 +36,41 @@ print(f'You have {points} points')
 if points > good_ps:
     print('Your password is great')
 
+# if password is good make better
 elif points == good_ps:
     print('Your password is good')
-
-    # fix good password 
+    response = input('Would you like to make your password better y or n')
+    
+    # if password is good improve
+    if response = y:
     new_number = random.choice(numbers)
     new_symbol = random.choice(symbols)
     new_ps = password + new_symbol + new_number
     print(f'Your new password is {new_ps}')
 
+    if response = n:
+        stop
+
 else:
     print('Your password is bad')
+    response = input('Would you like a new password y or n')
 
-    # fix bad password 
-    new_number = random.choice(numbers)
-    new_symbol = random.choice(symbols)
-    new_uletter = random.choice(u_letters)
-    new_lletter = random.choice(l_letters)
+# if password is bad make a new one
+    if response = y:
+        new_l_letter1 = random.choice(l_letters)
+        new_l_letter2 = random.choice(l_letters)
+        new_l_letter3 = random.choice(l_letters)
+        new_l_letter4 = random.choice(l_letters)
+        new_l_letter5 = random.choice(l_letters)
+        new_l_letter6 = random.choice(l_letters)
 
-    new_ps = password + new_uletter + new_lletter + new_symbol + new_number
-    print(f'Your stronger password is {new_ps}')
+        new_u_letter1 = random.choice(u_letters)
+        new_u_letter2 = random.choice(u_letters)
+
+        new_number = random.choice(numbers)
+        new_symbol = random.choice(symbols)
+
+    new_ps = new_u_letter1 + new_l_letter1 + new_l_letter2 + new_l_letter3 + new_l_letter3 + 
+            new_number + new_l_letter4 + new_l_letter5 + new_u_letter3 + new_l_letter6 + new_symbol        
+
+    print(f'your new passoword is {new_ps}')
