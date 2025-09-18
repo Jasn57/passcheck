@@ -47,7 +47,7 @@ elif points == good_ps:
         print(f'Your new password is {new_ps}')
 
     elif response == 'n':
-        print('Okay, keeping your password.')
+        print('ok')
 
 else:
     print('Your password is bad')
@@ -73,4 +73,4 @@ else:
         print(f'Your new password is {new_ps}')
 
     elif response == 'n':
-        print('Okay, keeping your password.')
+        print('ok')
