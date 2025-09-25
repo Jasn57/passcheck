@@ -1,76 +1,86 @@
 import random
 
-# Get password
-password = input("Enter your password: ")
-print(f'Your password is {password}')
-
 # Define characters
-u_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-l_letters = "abcdefghijklmnopqrstuvwxyz"
-numbers = "1234567890"
-symbols = "!@#$%"
+U_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+L_LETTERS = "abcdefghijklmnopqrstuvwxyz"
+NUMBERS = "1234567890"
+SYMBOLS = "!@#$%"
 
-# Set default points
-points = 0
+GOOD_PS = 10  # threshold for password strength points
 
-# Set password tier
-good_ps = 10
 
-# Add points 
-if any(char in l_letters for char in password):
-    points += 1
+def calculate_points(password: str) -> int:
+    points = 0
+    if any(char in L_LETTERS for char in password):
+        points += 1
+    if any(char in U_LETTERS for char in password):
+        points += 2
+    if any(char in NUMBERS for char in password):
+        points += 3
+    if any(char in SYMBOLS for char in password):
+        points += 4
+    return points
 
-if any(char in u_letters for char in password):
-    points += 2
 
-if any(char in numbers for char in password):
-    points += 3
+def generate_new_password() -> str:
+    # Generate a new password
+    parts = [
+        random.choice(U_LETTERS),
+        random.choice(L_LETTERS),
+        random.choice(L_LETTERS),
+        random.choice(L_LETTERS),
+        random.choice(L_LETTERS),
+        random.choice(NUMBERS),
+        random.choice(L_LETTERS),
+        random.choice(L_LETTERS),
+        random.choice(U_LETTERS),
+        random.choice(SYMBOLS),
+    ]
+    return "".join(parts)
 
-if any(char in symbols for char in password):
-    points += 4
 
-# Print total
-print(f'You have {points} points')
+def main():
+    request = input('Want to fix your password (type 1) or make a new one (type 2): ').strip()
 
-# Rank password
-if points > good_ps:
-    print('Your password is great')
+    if request == '1':
+        password = input("Enter your password: ")
+        print(f'Your password is {password}')
 
-elif points == good_ps:
-    print('Your password is good')
-    response = input('Would you like to make your password better? (y or n): ').lower()
+        # calculate points
+        points = calculate_points(password)
+        print(f'You have {points} points')
 
-    if response == 'y':
-        new_number = random.choice(numbers)
-        new_symbol = random.choice(symbols)
-        new_ps = password + new_symbol + new_number
-        print(f'Your new password is {new_ps}')
+        # if great
+        if points > GOOD_PS:
+            print('Your password is great')
 
-    elif response == 'n':
-        print('ok')
+        # if good
+        elif points == GOOD_PS:
+            print('Your password is good')
+            response = input('Would you like to make your password better? (y or n): ').lower()
+            if response == 'y':
+                new_password = password + random.choice(SYMBOLS) + random.choice(NUMBERS)
+                print(f'Your new password is {new_password}')
+            else:
+                print('Okay no changes made.')
 
-else:
-    print('Your password is bad')
-    response = input('Would you like a new password? (y or n): ').lower()
+        # if bad
+        else:
+            print('Your password is bad')
+            response = input('Would you like a new password? (y or n): ').lower()
+            if response == 'y':
+                new_password = generate_new_password()
+                print(f'Your new password is {new_password}')
+            else:
+                print('Okay, no changes made.')
 
-    if response == 'y':
-        new_l_letter1 = random.choice(l_letters)
-        new_l_letter2 = random.choice(l_letters)
-        new_l_letter3 = random.choice(l_letters)
-        new_l_letter4 = random.choice(l_letters)
-        new_l_letter5 = random.choice(l_letters)
-        new_l_letter6 = random.choice(l_letters)
+    elif request == '2':
+        new_password = generate_new_password()
+        print(f'Your new password is {new_password}')
 
-        new_u_letter1 = random.choice(u_letters)
-        new_u_letter2 = random.choice(u_letters)
+    else:
+        print("Invalid option. Please type '1' or '2'.")
 
-        new_number = random.choice(numbers)
-        new_symbol = random.choice(symbols)
 
-        new_ps = (new_u_letter1 + new_l_letter1 + new_l_letter2 + new_l_letter3 + new_l_letter4 +
-                  new_number + new_l_letter5 + new_l_letter6 + new_u_letter2 + new_symbol)
-
-        print(f'Your new password is {new_ps}')
-
-    elif response == 'n':
-        print('ok')
+if __name__ == "__main__":
+    main()
