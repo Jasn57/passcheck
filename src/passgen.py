@@ -1,17 +1,10 @@
-# import random
 import random
 
 # import charecters
-from utils.py import U_LETTERS
-from utils.py import L_LETTERS
-from utils.py import NUMBERS
-from utils.py import SYMBOLS
+from utils import U_LETTERS, L_LETTERS, NUMBERS, SYMBOLS
 
-# set variable for new ps
-new_password = generate_new_password()
-
+# generate new ps
 def generate_new_password() -> str:
-    # Generate a new password
     parts = [
         random.choice(U_LETTERS),
         random.choice(L_LETTERS),
