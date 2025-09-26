@@ -1,0 +1,4 @@
+U_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+L_LETTERS = "abcdefghijklmnopqrstuvwxyz"
+NUMBERS = "1234567890"
+SYMBOLS = "!@#$%"
