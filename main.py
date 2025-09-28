@@ -1,4 +1,3 @@
-import random
 from grade import calculate_points, GOOD_PS
 from passgen import generate_new_password
 from utils import SYMBOLS, NUMBERS
